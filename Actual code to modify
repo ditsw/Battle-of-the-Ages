@@ -1,0 +1,79 @@
+import random
+from dungeon_start import Entity, Weapon, main
+
+
+## -----  ADVENTURER / ENEMY / BOSS CLASSES  ----- ##
+# NOTE: Refer to the class Weapon and abstract class Entity in 
+# "dungeon_start.py" for what functions/methods need to be defined and used
+
+
+class Adventurer(Entity):
+    def __init__(self):
+        # WRITE YOUR CODE HERE #
+        super().__init__(self,'Danny',50,'nunchuks')
+        entity_type = 'ADVENTURER'
+        
+        
+
+        def __str__(self):
+            print('== {entity_type} ==')
+            print(f"Name: {name}")
+            print(f"Max HP: 50")
+            print(f"Cur HP: {hp}")
+            print(f"Weapon: {weapon}")
+            print(f"Attack: {}")
+
+        def get_name(self):
+            return self.name
+
+        def get_cur_hp(self):
+            return self._cur_hp
+
+        
+        def get_weapon(self):
+            return self._weapon
+
+        def dmg(self):
+            amt = int(self._attack)
+            
+
+        def regen(self):
+            print("The Adventurer is back to full health")
+
+        def set_weapon(Weapon):
+            return None
+            
+            
+        pass
+    
+
+
+class Enemy(Entity):
+    def __init__(self):
+        # WRITE YOUR CODE HERE #
+        super().__init__(self,'Ricardo',20,'lightsaber')
+        pass
+
+
+#    WRITE THE BOSS CLASS HERE     #
+# Make sure it inherits from Enemy #
+class Boss
+
+
+
+    
+
+
+
+
+
+# -------- WARNING! DO NOT MODIFY BELOW ------- #
+
+# initialize the characters and starts the battle
+if __name__ == "__main__":
+    adventurer_a = Adventurer()         
+    enemy_e = Enemy()             
+    boss_b = Boss()     
+
+    main(adventurer_a,enemy_e,boss_b)
+
