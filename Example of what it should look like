@@ -1,0 +1,83 @@
+************ DUNGEON START ************
+* Adventurer Milk encounters the Enemy Goblin in the dungeon.       # get_name() used for both the Adventurer instance and Enemy instance 
+
+== ADVENTURER ==                                # __str__() called for Adventurer instance
+Name: Milk
+Max HP: 50
+Cur HP: 50
+Weapon: katana
+Attack: (1, 20)
+
+== ENEMY ==                                     # __str__() called for Enemy instance
+Name: Goblin
+Max HP: 20
+Cur HP: 20
+Weapon: dagger
+Attack: (3, 8)
+
+**** FIGHT START ****
+[Milk] Hya!                                     # fight() called for Adventurer instance (print message)
+* Goblin took 19 damage!                        # dmg() called for Enemy instance (print message)
+[Goblin] Ehehehehe!                             # fight() called for Enemy instance (print message)
+* Milk took 6 damage!                           # dmg() called for Adventurer instance (print message)
+==== CURRENT HP ====
+Milk HP = [44]                                  # get_cur_hp() called for Adventurer instance
+Goblin HP = [1]                                 # get_cur_hp() called for Enemy instance
+
+[Milk] Hya!
+* Goblin took 4 damage!
+[Goblin]: Noooo! Why do I even guard this dungeon?!             # die() called for Enemy instance (print message)
+* Enemy Goblin was defeated! Adventurer Milk is victorious!
+
+* Milk regenerated their health back!                           # regen() called for Adventurer instance (print message)
+
+* Adventurer Milk encounters the Enemy Dragon in the dungeon.
+* Dragon is a boss! Watch out Milk!                             # is_boss() called for Boss instance and returns True
+
+== ADVENTURER ==
+Name: Milk
+Max HP: 50
+Cur HP: 50
+Weapon: katana
+Attack: (1, 20)
+
+== ENEMY ==                                                     # __str__() called for Boss instance -- inherits from Enemy class
+Name: Dragon
+Max HP: 50
+Cur HP: 50
+Weapon: fire breath
+Attack: (10, 15)
+
+**** FIGHT START ****
+* Milk restored 4 HP!
+[Milk] Hya!
+* Dragon took 10 damage!                                        # dmg() called for Boss instance -- inherited from Enemy
+[Dragon] ROOOOOOAARRR!                                          # fight() called for Boss instance
+* Milk took 11 damage!
+==== CURRENT HP ====
+Milk HP = [39]
+Dragon HP = [40]
+
+* Dragon restored 5 HP!                                         # use_potion called for Boss instance -- inherited from Enemy (print message)
+[Milk] Hya!
+* Dragon took 4 damage!
+[Dragon] ROOOOOOAARRR!
+* Milk took 15 damage!
+==== CURRENT HP ====
+Milk HP = [24]
+Dragon HP = [41]
+
+[Milk] Hya!
+* Dragon took 12 damage!
+[Dragon] ROOOOOOAARRR!
+* Milk took 14 damage!
+==== CURRENT HP ====
+Milk HP = [10]
+Dragon HP = [29]
+
+* Milk uprgraded their weapon to Excalibur!                         # set_weapon() called for Adventurer instance
+[Milk] Hya!
+* Dragon took 61 damage!
+[Dragon]: ROOOOAAARR! Curse you!                                    # die() called for Boss instance (print message)
+* Enemy Dragon was defeated! Adventurer Milk is victorious!
+************ END OF DUNGEON ************
