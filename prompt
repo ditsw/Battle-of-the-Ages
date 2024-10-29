@@ -1,0 +1,150 @@
+Introduction
+
+This project is a dungeon battle encounter between a hero character against an enemy and a boss. Like many games, these character objects are modularized and built on pre-defined functions. Your assignment is to write and document the functions of the adventurer, enemy, and boss using inheritance and polymorphism so that the encounters can run in the simulation.
+
+Starter Code
+
+For this project, there are 2 files you will use: dungeon_start.py and dungeon-p3-TEMPLATE.py. However, you will only modify dungeon-p3-TEMPLATE.py. DO NOT CHANGE dungeon_start.py or your code may not run correctly or be graded accurately. The other file is for reference and further instruction on how your methods and classes should be defined and how they will be used in the dungeon encounter simulation.
+Dungeon Start Code
+This code defines 3 classes: Weapon, Entity, and Dungeon. The 2 you need to concern yourself with are Weapon and Entity. Study this code carefully, but DO NOT edit anything.
+Weapon is a class already fully defined. It contains the private properties _name -- a string value -- and _attack -- a tuple value. Use this class to make new instances for the Entity classes.
+Entity is an abstract class. The properties and methods defined here are promised for the Adventurer, Enemy, and Boss classes that need to be defined later (see "Instructions".) Take note of the parameter typing and descriptions of the methods above each abstract function definition in this class. Each class inherited from this class needs to have these methods defined.
+Dungeon is a static class. This class runs the dungeon encounter for the program and makes use of the methods promised by the abstract class Entity. You're welcome to look at the code, but it's not necessary to study for this project. Like everything else in this file, it is critical that you DO NOT alter anything in this code.
+ 1/5
+
+
+ The main() function at the bottom simulates the 2 dungeon encounters between an Adventurer instance against an Enemy instance and the same Adventurer instance against a Boss instance using the static Dungeon class.
+
+Dungeon P3
+
+This is the code you will be modifying. DO NOT remove or modify the import statements at the top.
+The Adventurer and Enemy class have already been started. The Boss class must be written from scratch by you.
+DO NOT modify the main condition at the bottom of the script or anything inside of it. This is necessary to run the code. Make sure your Adventurer, Enemy, and Boss do not take any values for the initialization function. These values can be hard-coded internally.
+Instructions
+You will be implementing the promised methods for the Adventurer and Enemy class which inherits from the Entity class as well as creating a new class Boss, which inherits from the Enemy class. These will be defined in the dungeon-p3-TEMPLATE.py file (replace 'TEMPLATE' with your last name.)
+Below detail the definitions and requirements for each method. In addition to the method definitions, these 2 requirements must be met for each method:
+
+1. Each method must have a docstring describing what they do
+(Example)
+
+2. Any parameters passed in a method must be typed
+(Example)
+
+Both Classes (Adventurer and Enemy)
+
+Both Adventurer and Enemy inherit from the class Entity. Therefore, all of the abstract defined methods
+must be implemented. (These descriptions are also in the dungeon_start file as well.)
+
+1. __init__
+Must call the super() class of Entity and pass the appropriate values. Use hard-coded values for both classes, these can be whatever you want (see below for an example).
+ def get_cur_hp(self):
+    '''Return the current HP of the character'''
+    # rest of code... #
+ def dmg(self, amt:int):
+    '''Applies damage to the entity and subtracts health'''
+    # rest of code... #
+
+ 2. __str__
+
+Returns a string with the following details each on a new line: [name, max HP, current HP, weapon name, weapon attack range].
+
+3. get_name, get_cur_hp, get_weapon
+Getters that return the associated property values
+
+4. dmg
+Applies damage to the character by subtracting a value (amt) from the current HP. Print a message showing how much damage (amt) the character took.
+
+5. fight
+Applies damage to the opponent based on this character's weapon's use_weapon() method. Print a message from this character with a catchphrase or battle cry.
+
+6. use_potion
+Adds some random amount of HP back to the current HP. Make sure the current HP does not exceed the character's max HP. Print the amount of HP restored.
+
+7. die
+Print a message from the character with dying words
+
+Adventurer (additional info)
+For the Adventurer class, implement 2 additional methods:
+
+1. A method called regen() that takes in no parameters (aside from self) and returns nothing. This resets the character's _cur_hp back to the _max_hp value. Print a message saying the adventurer restored their health back to full.
+
+2. A setter method called set_weapon() that takes in one parameter of type Weapon and returns nothings. This method will set the adventurer's _weapon value to that of the passed parameter value weapon.
+Enemy (additional info)
+
+For the Enemy class, implement another function called is_boss() that takes in no parameters (aside from
+self) and returns a boolean value. For the enemy, this function should return False. Boss
+
+The Boss class character should be stronger than the Enemy class character and be initialized with a higher HP value and use a weapon with higher attack range.
+
+The Boss class inherits all of the definitions from the Enemy class as a child. Therefore, only methods allowed to be polymorphed from the Enemy class and thus included in the definition are the following:
+
+1. __init__ (also set with hard-coded values) 
+
+2. is_boss
+def __init__(self):
+    '''Initializing method for the adventurer character'''
+    super().__init__("Milk", 50, Weapon("katana", (1,20)))
+
+ 3. fight 
+ 
+ 4. die
+
+All other methods are not allowed to be redefined for this class. is_boss() should return True and the messages should be different for this class.
+
+Example Output
+
+See the Encounter Example for sample output from the program after all of the classes have been successfully implemented. The sections of code and function calls are annotated on the side. The lines that are the result of print messages are noted with "(print message)"
+Note that the code runs without error throughout the 2 encounters. The functions can be shown to have executed correctly through printed the messages/flavor text shown.
+Different events happen because of randomization (i.e. adventurer being defeated, different characters using a potion, setting a new weapon), so be sure to run the program multiple times.
+
+Error Examples
+
+1. missing_abs_method.txt shows what kind of error message you'd see if you forgot to implement one of the promised abstract methods.
+
+2. missing_req_method.txt shows what kind of error message you'd see if you forgot to implement one of the required methods that was requested in the instructions. The program will run at first, but if it's missing the function it needs to call later, then it will error out.
+
+Rules
+
+DO NOT CHANGE ANY CODE IN dungeon_start.
+
+Do not modify the parameters in any of the child classes. Follow the instructions and descriptions closely.
+
+Do not allow classes to access or modify any properties of OTHER instances directly. Call their getter functions or associated modifier functions (i.e. dmg) instead. (Note: having a class access its own property is allowed, see below)
+
+Libraries are NOT ALLOWED to be imported. This includes built-in Python libraries and external libraries. Additional helper functions are allowed to be implemented into the classes. However, all of the abstract methods and additional functions described in the Instructions must be implemented and will be graded.
+
+CODE FROM GENERATIVE AI IS PROHIBITED. The code you turn in is your own. The code will be checked for plagiarism.
+ 
+ # For some instance of Adventurer class [a]
+a._cur_hp -= 10      # NO
+a.dmg(10)            # YES
+Hints
+
+Look at the Weapon class definition for what is expected of method definitions concerning docstrings and parameter typing.
+
+Once you finish writing either Adventurer or Enemy, you can copy-paste the definitions into the other with minor changes to the print messages and random values.
+
+For the Boss initializer, use super(Enemy, self) to access the grandparent class initializer.
+
+If you're struggling, temporarily comment out the main() call to see if the class definitions are correctly implemented. Remember to uncomment it though when you're done debugging!
+
+The only functions that return values are the getter functions of the class and the is_boss() function of Enemy and Boss. The rest only modify values and print messages.
+
+In the use_potion() method, use the built-in methods max() or min() to make sure the current health isn't more than the maximum health.
+
+The results of the encounters don't matter, only that the code runs without errors. Different events happen because of randomization (i.e. adventurer being defeated, characters using the potion, setting a new weapon), so run the program multiple times.
+
+Rubric
+
+General
+[5 pts] Correct file is turned in and is correctly named (see Submission above) with no additional files. [5 pts] Code has header documentation -- name, date, class course name and section, and program description.
+[10 pts] Starting code imports, function names, parameters, and main condition are not modified.
+Feedback
+[10 pts] Code runs successfully without errors.
+[10 pts] Each method has a docstring and the parameters have correctly assigned types [10 pts] Methods have printed message text that are different from each class
+Class Implementation
+[10 pts] Instance properties are not accessed directly
+[10 pts] All classes have their promised abstract methods and functions from Entity implemented [10 pts] Adventurer class is implemented correctly with the additional regen() and set_weapon() methods
+[10 pts] Enemy class is implemented correctly with the additional is_boss() function.
+[10 pts] Boss class is implemented correctly, inheriting from Enemy, with only the __init__, is_boss(), fight(), and die() function and methods implemented.
+5/5
